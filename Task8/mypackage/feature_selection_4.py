@@ -7,13 +7,13 @@ from sklearn.tree import DecisionTreeClassifier
 #------------------------------------------------------------------------------------
 
 
-def Feature_Selection(self):
+def Feature_Selection_4(self):
     print("START SELECTING DATA..." + '\n' + '=' * 100)
 
     #get correlation rank
     print('Fitting into Decision Tree...')
     model_ = DecisionTreeClassifier(random_state = 42)
-    model_.fit(self.X_train, self.y_train)
+    model_.fit(self.X_train, self.y_train_binary)
 
     importances = pd.Series(model_.feature_importances_, index = self.X_train.columns)
     importances_sorted = importances.sort_values(ascending=False)

@@ -26,7 +26,7 @@ def Model(self, x_train_final, y_train_final, x_test_final, y_test_final, type):
             print(classification_report(y_test_final, y_predict_final, digits = 4, target_names = self.multi_classes_))
         """
     df_score_dict = pd.DataFrame.from_dict(score_dict, orient = 'index', columns = ['Precision', 'Recall', 'F1']) #orient = index: keys của dict sẽ trở thành index (hàng) của DataFrame.
-    return(df_score_dict)
+    print(df_score_dict)
 
 
 

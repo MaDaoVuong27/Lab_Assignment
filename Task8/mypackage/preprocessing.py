@@ -2,6 +2,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, OrdinalEncoder, OneHotEncoder, LabelEncoder
+from imblearn.over_sampling import RandomOverSampler
+from collections import Counter
 
 def Preprocess(self):
     print("START PREPROCESSING DATA..." + '\n' + '=' * 100)

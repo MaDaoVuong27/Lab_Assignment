@@ -8,7 +8,7 @@ import numpy as np
 
 
 
-def Feature_Selection(self):
+def Feature_Selection_2(self):
     print("START SELECTING DATA..." + '\n' + '=' * 100)
 
     #get correlation rank

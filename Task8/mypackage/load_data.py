@@ -17,6 +17,7 @@ class UNSW_NB15:
         self.onehot_encoder = {}
         self.label_encoder = {}
         self.corr = pd.Series()
+        
         self.models = {
             'Decision Tree': DecisionTreeClassifier(random_state = self.random_state), 
             'Random Forest': RandomForestClassifier(random_state = self.random_state, max_depth = 5),
@@ -24,6 +25,16 @@ class UNSW_NB15:
             'MLP': MLPClassifier(random_state = self.random_state, max_iter = 100, hidden_layer_sizes = (200,)),
             'Naive Bayes': BernoulliNB()
         }
+        
+        """
+        self.models = {
+            'Decision Tree': DecisionTreeClassifier(criterion='entropy', max_depth=30, min_samples_leaf=2, min_samples_split=5, random_state=self.random_state, splitter='random'), 
+            'Random Forest': RandomForestClassifier(random_state = self.random_state, criterion = 'entropy', max_depth = 10, min_samples_leaf = 3, min_samples_split = 7, n_estimators = 200),
+            'K Neighbors': KNeighborsClassifier(metric = 'manhattan', n_neighbors = 9, p = 1, weights = 'distance'),
+            'MLP': MLPClassifier(random_state = self.random_state, activation = 'relu', alpha = 0.0001, hidden_layer_sizes = (100, 50), learning_rate = 'constant', max_iter = 200, solver = 'adam'),
+            'Naive Bayes': BernoulliNB()
+        }
+        """
         self.train = None
         self.test = None
 

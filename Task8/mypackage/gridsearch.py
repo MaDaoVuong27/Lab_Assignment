@@ -14,12 +14,17 @@ def Grid_Search_Decision_Tree(x_train_, y_train_, x_test_, y_test_):
     model = DecisionTreeClassifier(random_state = 42)
 
     param_grid = {
-        "criterion": ["gini", "entropy", "log_loss"],   # Hàm đo độ phân chia
-        "max_depth": [None, 5, 10, 20],             # Độ sâu tối đa của cây
-        "min_samples_split": [2, 5, 10],            # Số mẫu tối thiểu để tách nhánh
-        "min_samples_leaf": [1, 2, 5],              # Số mẫu tối thiểu ở một lá
+        "criterion": ["gini", "entropy", "log_loss"],        # Hàm đo độ phân chia
+        "splitter": ["best", "random"],                      # Cách chọn split
+        "max_depth": [None, 5, 10, 20, 30, 50],     # Độ sâu tối đa của cây
+        "min_samples_split": [2, 5, 10],             # Số mẫu tối thiểu để tách nhánh
+        "min_samples_leaf": [1, 2, 4, 6, 10],            # Số mẫu tối thiểu ở một lá
+        "max_features": [None, "sqrt", "log2"],              # Số đặc trưng tối đa
+        "max_leaf_nodes": [None, 10, 20],      # Số nút lá tối đa
+        "min_weight_fraction_leaf": [0.0, 0.01],  # Tỉ lệ trọng số nhỏ nhất ở một lá
+        "class_weight": [None, "balanced"],                  # Xử lý imbalance dữ liệu
+        "ccp_alpha": [0.0, 0.001],                # Complexity parameter cho pruning
     }
-
     grid = GridSearchCV(estimator = model, param_grid = param_grid, scoring = 'f1_weighted', cv = 4, verbose = 2)
     grid.fit(x_train_, y_train_)
     y_predict_ = grid.predict(x_test_)
